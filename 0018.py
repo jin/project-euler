@@ -1,13 +1,13 @@
-#Starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+# Starting at the top of the triangle below and moving to adjacent numbers on the
+# row below, the maximum total from top to bottom is 23.
 
-#3
-#7 4
-#2 4 6
-#8 5 9 3
+# 3
+# 7 4
+# 2 4 6
+# 8 5 9 3
 
-#That is, 3 + 7 + 4 + 9 = 23.
-
-#Find the maximum total from top to bottom of the triangle below:
+# That is, 3 + 7 + 4 + 9 = 23. Find the maximum total from top to bottom of the 
+# triangle below:
 
 
 triangle_str="""75
@@ -26,10 +26,26 @@ triangle_str="""75
 63 66 04 68 89 53 67 30 73 16 69 87 40 31
 04 62 98 27 23 09 70 98 73 93 38 53 60 04 23"""
 
-tri_list = triangle_str.strip().split("\n")
-tri_list.reverse()
-reversed_tree = [[int(x) for x in row.split()] for row in tri_list]
-print reversed_tree
+tri_data = triangle_str.strip().split("\n")
+tri_data.reverse()
+tri_data = [[int(x) for x in row.split()] for row in tri_data]
+print ("Reversed triangle")
+print ("=================")
+for i in tri_data:
+    print i
+print ("")
 
-for row in xrange(len(reversed_tree)):
-    print max(reversed_tree[row])
+
+def main():
+    for row in range(len(tri_data)):
+        for col in range(len(tri_data[row])-1):
+            tri_data[row+1][col] += max(tri_data[row][col],tri_data[row][col+1])
+        print tri_data[row]
+
+    print ("Maximum sum is %d" % tri_data[-1][0])
+
+if __name__ == "__main__":
+    main()
+    
+    
+
