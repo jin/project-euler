@@ -1,3 +1,6 @@
+import time
+
+
 def divisorGenerator(n):
     """Yield all divisors, excluding n itself"""
     for i in range(1,int(n/2)+1):
@@ -36,6 +39,7 @@ def e_sieve(n):
 
 
 def main():
+
     """Creates two lists of tuples, (a, d(a)) and (d[d(a)], d(a))"""
     sum = 0
     testvalues = list(range(1,10001))
@@ -65,4 +69,6 @@ def main():
 
 
 if __name__ == "__main__":
+    start = time.time()
     main()
+    print time.time() - start
